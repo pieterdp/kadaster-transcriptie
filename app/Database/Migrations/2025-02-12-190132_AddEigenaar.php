@@ -4,12 +4,12 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class AddKadasterTable extends Migration
+class AddEigenaar extends Migration
 {
     public function up()
     {
-        //
         $this->db->disableForeignKeyChecks();
+
         $this->forge->addField([
             'id' => [
                 'type' => 'INT',
@@ -19,25 +19,30 @@ class AddKadasterTable extends Migration
             ],
             'name' => [
                 'type' => 'VARCHAR',
-                'constraint' => 255
+                'constraint' => 512
+            ],
+            'occupation' => [
+                'type' => 'VARCHAR',
+                'constraint' => 512
             ],
             'city' => [
                 'type' => 'VARCHAR',
                 'constraint' => 255
-            ]
+            ],
 
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addKey('name', false, true);
-        $this->forge->addKey('city');
-        $this->forge->createTable('kadaster');
+        $this->forge->addKey('occupation', false, true);
+        $this->forge->addKey('city', false, true);
+        $this->forge->createTable('eigenaar');
         $this->db->enableForeignKeyChecks();
     }
 
     public function down()
     {
         $this->db->disableForeignKeyChecks();
-        $this->forge->dropTable('kadaster');
+        $this->forge->dropTable(tableName: 'eigenaar');
         $this->db->enableForeignKeyChecks();
     }
 }

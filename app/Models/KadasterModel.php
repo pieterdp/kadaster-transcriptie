@@ -6,6 +6,11 @@ use CodeIgniter\Model;
 class KadasterModel extends Model
 {
     protected $table = 'kadaster';
+    protected $allowedFields = [
+        'name',
+        'city',
+        'period'
+    ];
 
     public function getKadasters($name = null)
     {
