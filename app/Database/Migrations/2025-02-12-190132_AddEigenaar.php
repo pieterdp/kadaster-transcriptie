@@ -32,9 +32,9 @@ class AddEigenaar extends Migration
 
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->addKey('name', false, true);
-        $this->forge->addKey('occupation', false, true);
-        $this->forge->addKey('city', false, true);
+        $this->forge->addKey('name');
+        $this->forge->addKey('occupation');
+        $this->forge->addKey('city');
         $this->forge->createTable('eigenaar');
         $this->db->enableForeignKeyChecks();
     }

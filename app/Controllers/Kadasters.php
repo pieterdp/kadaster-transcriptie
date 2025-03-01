@@ -3,16 +3,32 @@
 namespace App\Controllers;
 
 use App\Models\KadasterModel;
+use App\Models\ArtikelModel;
+use App\Models\EigenaarModel;
 
 class Kadasters extends BaseController
 {
 
     public function index()
     {
-        $model = model(KadasterModel::class);
+        $kadasterModel = model(KadasterModel::class);
+        $artikelModel = model(ArtikelModel::class);
+        $eigenaarModel = model(EigenaarModel::class);
+
+        $kadasters = $kadasterModel->getKadasters();
+        $kadasters_with_metadata = [];
+
+        foreach ($kadasters as $kadaster) {
+            $kadaster['artikels'] = [];
+            foreach ($artikelModel->getArtikelsForKadaster($kadaster['id']) as $artikel) {
+                $artikel['eigenaar'] = $eigenaarModel->getEigenaarById($artikel['eigenaar_id']);
+                $kadaster['artikels'][] = $artikel;
+            }
+            $kadasters_with_metadata[] = $kadaster;
+        }
 
         $data = [
-            'kadaster_list' => $model->getKadasters(),
+            'kadasters' => $kadasters_with_metadata,
             'title' => 'Alle kadasters'
         ];
 

@@ -55,7 +55,7 @@ class AddPerceel extends Migration
             ]
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->addKey('number', false, true);
+        $this->forge->addKey('number');
         $this->forge->addForeignKey('artikel_id', 'artikel', 'id');
         $this->forge->createTable('perceel');
         $this->db->enableForeignKeyChecks();

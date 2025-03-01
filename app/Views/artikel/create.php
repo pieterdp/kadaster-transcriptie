@@ -2,14 +2,6 @@
 <?= session()->getFlashdata('error') ?>
 <?= validation_list_errors('error_list') ?>
 
-'number',
-        'written_income',
-        'written_size',
-        'computed_income',
-        'computed_size',
-        'kadester_id',
-        'eigenaar_id'
-
 <form action="/artikelen" method="post">
     <?= csrf_field() ?>
     <div class="mb-3">
@@ -17,12 +9,16 @@
         <input type="text" class="form-control" id="number" name="number" value="<?= set_value('number') ?>" />
     </div>
     <div class="mb-3">
-        <label for="written_income" class="form-label">Totaal belastbaar inkomen - in fr. (bron)</label>
-        <input type="text" class="form-control" id="written_income" name="written_income" value="<?= set_value('written_income') ?>" />
+        <label for="written_size" class="form-label">Totale oppervlakte - in a (bron)</label>
+        <input type="text" class="form-control" id="written_size" name="written_size" value="<?= set_value('written_size', 0) ?>" />
     </div>
     <div class="mb-3">
-        <label for="written_size" class="form-label">Totale oppervlakte - in a (bron)</label>
-        <input type="text" class="form-control" id="written_size" name="written_size" value="<?= set_value('written_size') ?>" />
+        <label for="written_income" class="form-label">Totaal belastbaar inkomen (onbebouwd) - in fr. (bron)</label>
+        <input type="text" class="form-control" id="written_income" name="written_income" value="<?= set_value('written_income', 0) ?>" />
+    </div>
+    <div class="mb-3">
+        <label for="written_income_built" class="form-label">Totaal belastbaar inkomen (bebouwd) - in fr. (bron)</label>
+        <input type="text" class="form-control" id="written_income_built" name="written_income_built" value="<?= set_value('written_income_built', 0) ?>" />
     </div>
     <div class="mb-3">
         <label for="kadaster_id" class="form-label">Kadaster</label>

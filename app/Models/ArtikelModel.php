@@ -10,9 +10,11 @@ class ArtikelModel extends Model
         'number',
         'written_income',
         'written_size',
+        'written_income_built',
         'computed_income',
         'computed_size',
-        'kadester_id',
+        'computed_income_built',
+        'kadaster_id',
         'eigenaar_id'
     ];
 
@@ -23,6 +25,11 @@ class ArtikelModel extends Model
         }
 
         return $this->where(['number' => $number])->first();
+    }
+
+    public function getArtikelsForKadaster($kadaster_id)
+    {
+        return $this->where(['kadaster_id' => $kadaster_id])->findAll();
     }
 
 }
