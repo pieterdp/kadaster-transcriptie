@@ -60,7 +60,7 @@ class Artikels extends BaseController
 
         /* Check if we already have this eigenaar */
         /* We check on the combo name, city, occupation and pick the first one, as we have to pick someone */
-        $eigenaars = $eigenaarModel->getEigenaarsByNameCityAndOccupation($input_data['eigenaar_name'], $input_data['eigenaar_occupation'], $input_data['eigenaar_city']);
+        $eigenaars = $eigenaarModel->getEigenaarsByNameCityAndOccupation($input_data['eigenaar_name'], $input_data['eigenaar_city'], $input_data['eigenaar_occupation']);
 
         if (count($eigenaars) > 0) {
             $eigenaar_id = $eigenaars[0]['id'];
