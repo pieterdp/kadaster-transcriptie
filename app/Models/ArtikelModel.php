@@ -32,4 +32,9 @@ class ArtikelModel extends Model
         return $this->where(['kadaster_id' => $kadaster_id])->findAll();
     }
 
+    public function getById($id)
+    {
+        return $this->where(['id' => $id])->first();
+    }
+
 }
