@@ -94,3 +94,5 @@
     </div>
     <button type="button" id="submit" class="btn btn-primary">Toevoegen</button>
 </form>
+
+<script src="/js/artikel.js"></script>
